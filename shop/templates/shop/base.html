@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>{% block title %}Shop{% endblock %}</title>
+</head>
+<body>
+<div>
+	<h2>Dynamic content</h2>
+	<p><strong>Customers:</strong> {{ num_customers }}</p>
+	<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+</div>
+<div>
+	<a href="/">Shop</a>
+</div>
+<div>
+	<div>
+		Your cart is empty.
+	</div>
+<div>
+	{% block content %}
+	{% endblock %}
+</div>
+</body>
+</html>
