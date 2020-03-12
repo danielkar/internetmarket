@@ -6,10 +6,22 @@
 	<title>{% block title %}Shop{% endblock %}</title>
 </head>
 <body>
+{% block content %}
 <div>
 	<h2>Dynamic content</h2>
 	<p><strong>Customers:</strong> {{ num_customers }}</p>
 	<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+</div>
+<div>
+    <ul>
+          <li><a href="{% url 'admin:index' %}">Admin</a></li>
+          <li><a href="{% url 'shop:register' %}">Register</a></li>     
+          {% if user.is_authenticated %}
+          	<li><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+          	<li><a href="{% url 'shop:user_login' %}">Login</a></li>
+          {% endif %}
+      </ul>
 </div>
 <div>
 	<a href="/">Shop</a>
@@ -18,9 +30,9 @@
 	<div>
 		Your cart is empty.
 	</div>
-<div>
-	{% block content %}
-	{% endblock %}
 </div>
+{% endblock %}
+{% block categories %}
+{% endblock %}
 </body>
 </html>

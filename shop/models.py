@@ -39,6 +39,12 @@ class Product(models.Model):
 		return self.name
 
 	def get_absolute_url(self):
-		return reverse('shop:product_detail',
-						args=[self.id, self.slug])
+		return reverse('shop:product_detail', args=[self.id, self.slug])
 
+class UserProfileInfo(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	portfolio_site = models.URLField(blank=True)
+	profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
+
+	def __str__(self):
+		return self.user.username
