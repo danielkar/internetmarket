@@ -66,9 +66,12 @@ def register(request):
                 profile.profile_pic = request.FILES['profile_pic']
             profile.save()
             registered = True 
-            return redirect('product_list')         
+            return redirect('/user_login')         
         else:
             print(user_form.errors, profile_form.errors)
+    
+    user_form = UserForm()
+    profile_form = UserProfileInfoForm()
 
     return render(request,'registration/registration.html', {
         'user_form': user_form,
@@ -84,7 +87,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                return redirect(reverse(''))
+                return redirect('/')
             else:
                 return HttpResponse("Your account was inactive.")
         else:
