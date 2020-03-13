@@ -5,6 +5,7 @@ from shop.forms import UserForm,UserProfileInfoForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 # Create your views here.
 
 def product_list(request, category_slug=None):
@@ -46,7 +47,7 @@ def special(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('base'))
+    return HttpResponseRedirect('product_list')
 
 def register(request):
     registered = False
@@ -84,7 +85,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                return HttpResponseRedirect(reverse('base'))
+                return HttpResponseRedirect('product_list')
             else:
                 return HttpResponse("Your account was inactive.")
         else:
