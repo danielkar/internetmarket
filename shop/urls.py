@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import product_list, product_detail, register, user_login, index
+from .views import product_list, product_detail, register, user_login, index, logout_view
 
 app_name = 'shop'
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('user_login/', user_login, name='user_login'),
     path('index/', index, name='index'),
+    path('logout/', logout_view, name='logout'),
 ]

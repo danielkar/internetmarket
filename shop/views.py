@@ -96,3 +96,7 @@ def user_login(request):
             return HttpResponse("Invalid login details given")
     else:
         return render(request, 'registration/login.html', {})
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
