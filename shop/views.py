@@ -32,29 +32,17 @@ def product_list(request, category_slug=None):
 def product_detail(request, id, slug):
     product = get_object_or_404(
         Product,
-<<<<<<< HEAD
-		id=id,
-		slug=slug,
-		available=True,
-        )
-      cart_product_form = CartAddProductForm()
-=======
         id=id,
         slug=slug,
         available=True,
     )
     cart_product_form = CartAddProductForm()
->>>>>>> cd4b7e601239b78944292b2aa772b9525d4df235
 
     context = {
 		'product': product,
         'cart_product_form': cart_product_form,
-	}
-<<<<<<< HEAD
-	return render(request, 'shop/product/detail.html', context)    
-=======
+    }
     return render(request, 'shop/product/detail.html', context)
->>>>>>> cd4b7e601239b78944292b2aa772b9525d4df235
 
 def index(request):
     return render(request,'shop/base.html')
