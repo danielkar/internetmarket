@@ -35,14 +35,14 @@ def product_detail(request, id, slug):
 		id=id,
 		slug=slug,
 		available=True,
-    )
-    cart_product_form = CartAddProductForm()
+        )
+      cart_product_form = CartAddProductForm()
 
 	context = {
 		'product': product,
         'cart_product_form': cart_product_form,
 	}
-	return render(request, 'shop/product/detail.html', context)
+	return render(request, 'shop/product/detail.html', context)    
 
 def index(request):
     return render(request,'shop/base.html')
