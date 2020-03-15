@@ -14,11 +14,11 @@
 </div>
 <div>
     <ul>
-          <li><a href="{% url 'admin:index' %}">Admin</a></li>
-          <li><a href="{% url 'shop:register' %}">Register</a></li>     
+          <li><a href="{% url 'admin:index' %}">Admin</a></li>   
           {% if user.is_authenticated %}
           	<li><a href="{% url 'shop:logout' %}">Logout</a></li>
           {% else %}
+          	<li><a href="{% url 'shop:register' %}">Register</a></li>
           	<li><a href="{% url 'shop:user_login' %}">Login</a></li>
           {% endif %}
       </ul>
